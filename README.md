@@ -45,7 +45,7 @@ dbimport --engine corp-000 sql/sym_config.sql
 Antes de que el nodo del hotel pueda sincronizarse, debe permitir que se registre con el hub. Ejecute este comando (puede hacerlo mientras el servidor se ejecuta en otra terminal):
 
 ```bash
-symadmin --engine corp-000 open-registration hotel 001
+symadmin --engine corp-000 open-registration hotel 1
 ```
 
 ### Iniciar Servidor
