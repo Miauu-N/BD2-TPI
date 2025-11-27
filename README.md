@@ -53,6 +53,12 @@ Inicie el servidor SymmetricDS:
 ```bash
 sym
 ```
+### Crear el hotel en la central
+insertar el dato desde la central o importarlo desde la db del hotel con el siguiente comando:
+```bash
+symadmin --engine hotel-001 reload-table --node 000 HOTEL
+```
+
 Revisa los registros. Deberías ver:
 1. `corp-000` iniciando.
 2. `hotel-001` iniciando e intentando registrarse con `corp-000`.
@@ -69,15 +75,15 @@ symadmin --engine corp-000 sync-triggers
 ```
 Revisa los registros del hotel. Deberías verlos. `Creating trigger for ...`.
 
-### Test 1: Hotel -> Corp (Alta Local)
-1. Run `sql/test_data_hotel_1.sql` en `hotel_001.fdb` (o insertar un NUEVO registro manualmente).
-2. Espere el intervalo de inserción (predeterminado 10 s).
-3. Controlar `corp.fdb`. Las tablas `HABITACION`, `HUESPED`, `RESERVA`, `CONSUMO` debe contener los nuevos registros.
-
-### Test 2: Corp -> Hotel (Updates)
+### Test 1: Corp -> Hotel (Updates)
 1. Run `sql/test_data_corp.sql` en `corp.fdb`.
 2. Espere el intervalo de push/pull.
 3. Controlar `hotel_001.fdb`. La tabla `HOTEL` debe actualizarse.
+
+### Test 2: Hotel -> Corp (Alta Local)
+1. Run `sql/test_data_hotel_1.sql` en `hotel_001.fdb` (o insertar un NUEVO registro manualmente).
+2. Espere el intervalo de inserción (predeterminado 10 s).
+3. Controlar `corp.fdb`. Las tablas `HABITACION`, `HUESPED`, `RESERVA`, `CONSUMO` debe contener los nuevos registros.
 
 ### Test 3: Filtracion
 1. Inserte un registro en `hotel_001.fdb` con un `ID_HOTEL` diferente (por ejemplo, 999) manualmente (si no está bloqueado por FK).
@@ -183,7 +189,7 @@ Una vez registrado el Hotel 2, debes definirlo en la base de datos de **Hub (Cor
 1.  Conectarse a `corp.fdb`.
 2.  Run:
     ```sql
-    INSERT INTO HOTEL (ID_HOTEL, NOMBRE, DIRECCION) VALUES (2, 'Hotel 2 Name', 'Address');
+    INSERT INTO HOTEL (ID_HOTEL, NOMBRE, UBICACION) VALUES (2, 'Hotel 2 Name', 'Address');
     COMMIT;
     ```
 3.  SymmetricDS enviará automáticamente este registro a `hotel_002.fdb` (debido al canal `corp_to_hotel`).
