@@ -26,6 +26,9 @@ Run `sql/schema.sql` en **BOTH** bases de datos para crear las tablas y generado
 Copie los archivos de configuración a su SymmetricDS `engines` directorio (o ejecutar de forma independiente).
 - `conf/corp.properties` -> `engines/corp-000.properties`
 - `conf/hotel-template.properties` -> `engines/hotel-001.properties` (Edite `db.url` según sea necesario).
+
+### Configuracion de SymetricDS
+copie el archivo sym_config.sql a la carpeta bin de su servidor SymetricDS
   
 ### Inicializar tablas de SymmetricDS
 Ejecute el siguiente comando para crear tablas del sistema SymmetricDS en la base de datos **Corp** y cargar la configuración:
