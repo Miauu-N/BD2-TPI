@@ -3,10 +3,12 @@
 This guide explains how to set up and verify the SymmetricDS replication between the Corporate Hub and Hotel Spokes.
 
 ## Prerequisites
-- Firebird Database Server installed.
-- SymmetricDS installed (e.g., version 3.14+).
-- Java Runtime Environment (JRE) for SymmetricDS.
-- **Firebird JDBC Driver (Jaybird)**: You must download the `jaybird-full-x.x.x.jar` and place it in the `lib` folder of your SymmetricDS installation.
+- **Firebird Database Server**: Version **3.0.x** (SuperServer recommended).
+- **SymmetricDS**: Version **3.16.x** (tested with 3.16.8).
+- **Java Runtime Environment (JRE)**: Version **8** or **11** (required for SymmetricDS).
+- **Firebird JDBC Driver (Jaybird)**: Version **4.x.x** (specifically `jaybird-full-4.x.x.jar`).
+    - *Note: Do NOT use Jaybird 5 as it lacks the 'full' jar required by SymmetricDS.*
+    - Place this jar in the `lib` folder of your SymmetricDS installation.
 
 ## 1. Database Setup
 
