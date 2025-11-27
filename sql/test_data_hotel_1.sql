@@ -3,7 +3,6 @@
 
 -- 1. Insert Hotel Info (if not present, though usually comes from Corp)
 -- For the test, we might need it locally to satisfy FKs if replication hasn't happened yet.
-INSERT INTO HOTEL (ID_HOTEL, NOMBRE, UBICACION) VALUES (1, 'Hotel Playa', 'Cancun');
 
 -- 2. Insert Rooms
 INSERT INTO HABITACION (ID_HAB, ID_HOTEL, TIPO, ESTADO) VALUES (100001, 1, 'SINGLE', 'DISPONIBLE');
